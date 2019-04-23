@@ -39,7 +39,7 @@
   - graphQL
 ---
 ## Functional Programming
-  - side effect
+  - [side effect](./source/functional_programming/side_effect.md)
   - pure function
   - recurring
   - currying
