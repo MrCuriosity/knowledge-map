@@ -4,6 +4,13 @@
   - Function
   - iterator
   - generator
+
+## CSS
+  - Negative margin
+    - [cnblogs一篇很不错的文章](https://www.cnblogs.com/LiveWithIt/p/6024864.html#commentform)
+  - BFC
+  - Holy grail layout
+
 ---
 ## React
   - Diff strategy
@@ -44,3 +51,8 @@
   - recurring
   - currying
   - compose
+---
+
+## Authorization
+  - password(salt & hashing)
+    - [一篇infoQ的翻译文章](https://www.infoq.cn/article/how-to-encrypt-the-user-password-correctly)
