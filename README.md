@@ -16,6 +16,7 @@
   - Diff strategy
   - Virtual DOM
   - Fiber
+    - [完全理解React Fiber - ayqy](http://www.ayqy.net/blog/dive-into-react-fiber/)
   - Component & PureComponent
   - Lifecycle
   - Ref(implement DOM directly)
