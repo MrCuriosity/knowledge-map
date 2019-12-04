@@ -1,9 +1,21 @@
 ## Javascript Foundation
   - prototype & \_\_proto\_\_
+  - base data type(latest ECMAScript defined **8** types)
+    - Boolean
+    - Null
+    - Undefined
+    - Number
+      - [浮点数陷阱及解法](https://github.com/camsong/blog/issues/9)
+    - BigInt
+    - String
+    - Symbol
   - Object
   - Function
   - iterator
+    - [阮一峰es6入门](http://es6.ruanyifeng.com/#docs/iterator)
   - generator
+  - Map
+  - Set
 
 ## CSS
   - Negative margin
