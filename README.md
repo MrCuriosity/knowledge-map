@@ -10,12 +10,14 @@
     - String
     - Symbol
   - Object
+    - structure:[HashMap](https://plushunter.github.io/2017/07/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%8811%EF%BC%89%EF%BC%9A%E5%93%88%E5%B8%8C%E8%A1%A8/)
   - Function
   - iterator
     - [阮一峰es6入门](http://es6.ruanyifeng.com/#docs/iterator)
   - generator
   - Map
   - Set
+  - Module
 
 ## CSS
   - Negative margin
@@ -61,6 +63,7 @@
 ## Functional Programming
   - [side effect](./source/functional_programming/side_effect.md)
   - pure function
+  - [tail invoking](https://juejin.im/entry/592e8a2d0ce463006b510b34)
   - recurring
   - currying
   - compose
