@@ -32,6 +32,7 @@
   - Fiber
     - [完全理解React Fiber - ayqy](http://www.ayqy.net/blog/dive-into-react-fiber/)
   - Component & PureComponent
+  - StatelessComponent & React.memo
   - Lifecycle
   - Ref(implement DOM directly)
   - stateless component & class component
@@ -56,6 +57,8 @@
   - cross domain
   - XSS(cross-stie scripting)
   - oauth
+  - DNS
+    - [ayqy博客 - 一文详解DNS](https://mp.weixin.qq.com/s/0YKV9E4rd77Wc7U4XJmWEQ)
 ## API
   - RESTful
   - graphQL
@@ -72,3 +75,7 @@
 ## Authorization
   - password(salt & hashing)
     - [一篇infoQ的翻译文章](https://www.infoq.cn/article/how-to-encrypt-the-user-password-correctly)
+
+## Asynchronse
+  - Promise
+    - [一步一步实现一个Promise](https://juejin.im/post/5c6ad98e6fb9a049d51a0f5e)
