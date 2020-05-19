@@ -48,6 +48,7 @@
     - [Official Doc](https://reactjs.org/docs/portals.html)
   - Fragment
     - [Official Doc](https://reactjs.org/docs/fragments.html)
+  - React.la
 ---
 ## HTTP
   - Idempotent
@@ -55,10 +56,18 @@
     - [zh](https://developer.mozilla.org/zh-CN/docs/Glossary/%E5%B9%82%E7%AD%89)
   - three way handshake
   - cross domain
-  - XSS(cross-stie scripting)
+    - JSONP
+    - CORS
+    - proxy(e.g. nginx)
+  - security
+    - XSS
+    - CSRF
   - oauth
   - DNS
     - [ayqy博客 - 一文详解DNS](https://mp.weixin.qq.com/s/0YKV9E4rd77Wc7U4XJmWEQ)
+  - Cache
+    - 强缓存(Expires/Cache-Control)
+    - 协商缓存(Etag/If-None-Match/Last-Modified/If-Modified-Since)
 ## API
   - RESTful
   - graphQL
@@ -79,3 +88,18 @@
 ## Asynchronse
   - Promise
     - [一步一步实现一个Promise](https://juejin.im/post/5c6ad98e6fb9a049d51a0f5e)
+
+## Performance
+  - [Google Developer Doc](https://developers.google.com/web/fundamentals/performance/why-performance-matters)
+
+---
+## Infrastructure
+  - webpack
+    - volumn optimization
+    - speed optimization
+    - dynamically importing
+  - module
+    - ES6 module(reference importing)
+    - CommonJS(value importing)
+    - AMD
+    - CMD
