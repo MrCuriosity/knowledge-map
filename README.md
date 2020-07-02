@@ -61,6 +61,7 @@
     - proxy(e.g. nginx)
   - security
     - XSS
+      - [一篇不错的文章](https://www.cxymsg.com/guide/security.html#%E5%A6%82%E4%BD%95%E9%A2%84%E9%98%B2xss)
     - CSRF
   - oauth
   - DNS
@@ -71,6 +72,9 @@
 ## API
   - RESTful
   - graphQL
+
+## HTTP2
+  - [background](https://http2-explained.haxx.se/zh/part1)
 ---
 ## Functional Programming
   - [side effect](./source/functional_programming/side_effect.md)
