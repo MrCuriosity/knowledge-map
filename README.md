@@ -69,15 +69,17 @@
   - Cache
     - 静态资源缓存
       - 强缓存(Pragma/Cache-Control/Expires)
-        - Expires是HTTP1.0标准，表示在将来某个时间失效(必须是格林威治时间)
+        - Expires是HTTP1.0标准, 表示在将来某个时间失效(必须是格林威治时间)
         - Cache-Control是HTTP1.1标准
-        - 为了做向下兼容，三者可能同时出现，如果同时出现，优先级为Pragma -> Cache-Control -> Expires
+        - 为了做向下兼容, 三者可能同时出现, 如果同时出现, 优先级为Pragma -> Cache-Control -> Expires
       - 协商缓存(Etag/If-None-Match/Last-Modified/If-Modified-Since)
-      - 无论是强缓存和协商缓存，在chrome中命中时都会有(from disk cache)和(from memory cache)的形式，目前标准不明，可能是浏览器会计算其大小，来决定是否放在内存中，从而达到更快的调取速度.
+        - Etag/If-None-Match(基于资源内容做的hash)
+        - Last-Modified/If-Modified-Since(基于资源修改时间的hash, 如果资源的内容没有发生实际上的变化, 但修改时间发生了变化, 这个响应头也会变化, 导致浪费资源获取一样的内容)
+      - 无论是强缓存和协商缓存, 在chrome中命中时都会有(from disk cache)和(from memory cache)的形式, 目前标准不明, 可能是浏览器会计算其大小, 来决定是否放在内存中, 从而达到更快的调取速度.
     - 数据缓存
-      - cookie(4k, 保持服务器会话状态, 可被拦截，无法跨域调用)
+      - cookie(4k, 保持服务器会话状态, 可被拦截, 无法跨域调用)
       - sesstionStorage
-      - localStorage(生命周期与cookie不同，稍大一点，5M左右，可以做一些数据的本地保持，故而生命周期理论上是无限的，受该域下JS控制，可以用于表单数据保持，登陆状态保持等)
+      - localStorage(生命周期与cookie不同, 稍大一点, 5M左右, 可以做一些数据的本地保持, 故而生命周期理论上是无限的, 受该域下JS控制, 可以用于表单数据保持, 登陆状态保持等)
 ## API
   - RESTful
   - graphQL
