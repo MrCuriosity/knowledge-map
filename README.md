@@ -67,8 +67,16 @@
   - DNS
     - [ayqy博客 - 一文详解DNS](https://mp.weixin.qq.com/s/0YKV9E4rd77Wc7U4XJmWEQ)
   - Cache
-    - 强缓存(Expires/Cache-Control)
-    - 协商缓存(Etag/If-None-Match/Last-Modified/If-Modified-Since)
+    - 静态资源缓存
+      - 强缓存(Pragma/Cache-Control/Expires)
+        - Expires是HTTP1.0标准，表示在将来某个时间失效(必须是格林威治时间)
+        - Cache-Control是HTTP1.1标准
+        - 为了做向下兼容，三者可能同时出现，如果同时出现，优先级为Pragma -> Cache-Control -> Expires
+      - 协商缓存(Etag/If-None-Match/Last-Modified/If-Modified-Since)
+    - 数据缓存
+      - cookie(4k, 保持服务器会话状态, 可被拦截，无法跨域调用)
+      - sesstionStorage
+      - localStorage(生命周期与cookie不同，稍大一点，5M左右，可以做一些数据的本地保持，故而生命周期理论上是无限的，受该域下JS控制，可以用于表单数据保持，登陆状态保持等)
 ## API
   - RESTful
   - graphQL
