@@ -75,6 +75,7 @@
       - 协商缓存(Etag/If-None-Match/Last-Modified/If-Modified-Since)
         - Etag/If-None-Match(基于资源内容做的hash)
         - Last-Modified/If-Modified-Since(基于资源修改时间的hash, 如果资源的内容没有发生实际上的变化, 但修改时间发生了变化, 这个响应头也会变化, 导致浪费资源获取一样的内容)
+        - 二者同时出现时, Etag优先级高于If-Modified-Since
       - 无论是强缓存和协商缓存, 在chrome中命中时都会有(from disk cache)和(from memory cache)的形式, 目前标准不明, 可能是浏览器会计算其大小, 来决定是否放在内存中, 从而达到更快的调取速度.
     - 数据缓存
       - cookie(4k, 保持服务器会话状态, 可被拦截, 无法跨域调用)
