@@ -73,6 +73,7 @@
         - Cache-Control是HTTP1.1标准
         - 为了做向下兼容，三者可能同时出现，如果同时出现，优先级为Pragma -> Cache-Control -> Expires
       - 协商缓存(Etag/If-None-Match/Last-Modified/If-Modified-Since)
+      - 无论是强缓存和协商缓存，在chrome中命中时都会有(from disk cache)和(from memory cache)的形式，目前标准不明，可能是浏览器会计算其大小，来决定是否放在内存中，从而达到更快的调取速度.
     - 数据缓存
       - cookie(4k, 保持服务器会话状态, 可被拦截，无法跨域调用)
       - sesstionStorage
