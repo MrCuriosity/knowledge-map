@@ -60,10 +60,16 @@
   - 弱集合只能添加引用类型
   - 且弱集合中的引用都是弱引用，即不作为垃圾回收机制的的参考，因此弱集合的元素随时都可能变化（元素真实的引用全部失去，被 GC 回收)
 - Module
+
   - import
-    - es6 module 是静态模块，是编译时就输出好的代码
-    - 由于是静态模块，所以可以进行静态分析、优化
+    - es6 module 是静态加载，是编译时就输出好的代码
+    - 由于是静态加载，所以可以进行静态分析、优化
     - 模块内部的变量外部无法获取，如要获取，则须通过 export 暴露出来.
+    - 一个文件中，同一个模块可以引用多次，但它是单例的
+      ```javascript
+      import { foo } from "test";
+      import { bar } from "test";
+      ```
   - import()
     - 类似于 node 的 require 命令，运行时加载
     - 由于运行时加载，所以与静态 import 不同，import()可以存在条件语句当中，它的返回值是一个 promise
@@ -78,6 +84,58 @@
       - `defer`会等页面中正常渲染结束(DOM 结构完全生成，及其他脚本执行完成)才会执行
       - `async`不会阻塞 DOM 的渲染，但是一旦脚本下载完，就会暂停 DOM 渲染执行脚本
       - 所以根据以上两点，如果有多个`defer`脚本，他们会形成顺序加载的效果; 而多个`async`会几乎同时开始下载，但谁先执行完成是无法保证的.
+  - CommonJS
+
+    - CommonJS 输出值的拷贝，而 es6 module 输出值的引用.
+
+      ```javascript
+      // lib.js
+      var counter = 3;
+      function incCounter() {
+        counter++;
+      }
+      module.exports = {
+        counter: counter,
+        incCounter: incCounter,
+      };
+
+      // main.js
+      var mod = require("./lib");
+
+      console.log(mod.counter); // 3
+      mod.incCounter();
+      console.log(mod.counter); // 3
+      ```
+
+      ```javascript
+      export let counter = 3;
+      export function incCounter() {
+        counter++;
+      }
+
+      // main.js
+      import { counter, incCounter } from "./lib";
+      console.log(counter); // 3
+      incCounter();
+      console.log(counter); // 4
+      ```
+
+      可见 es6 的模块是动态的，实时反映了其内部的变化，一个更生动的例子
+
+      ```javascript
+      // m1.js
+      export var foo = "bar";
+      setTimeout(() => (foo = "baz"), 500);
+
+      // m2.js
+      import { foo } from "./m1.js";
+      console.log(foo);
+      setTimeout(() => console.log(foo), 500);
+      ```
+
+    - CommonJS 运行时加载，es6 module 编译时输出接口.
+    - require()是同步加载，而 import 是异步加载, 但有一个独立的模块依赖解析阶段
+    -
 
 ## CSS
 
