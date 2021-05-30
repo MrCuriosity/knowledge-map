@@ -60,6 +60,24 @@
   - 弱集合只能添加引用类型
   - 且弱集合中的引用都是弱引用，即不作为垃圾回收机制的的参考，因此弱集合的元素随时都可能变化（元素真实的引用全部失去，被 GC 回收)
 - Module
+  - import
+    - es6 module 是静态模块，是编译时就输出好的代码
+    - 由于是静态模块，所以可以进行静态分析、优化
+    - 模块内部的变量外部无法获取，如要获取，则须通过 export 暴露出来.
+  - import()
+    - 类似于 node 的 require 命令，运行时加载
+    - 由于运行时加载，所以与静态 import 不同，import()可以存在条件语句当中，它的返回值是一个 promise
+      ```javascript
+      import(`./locales/${adaptedLocaleCode}.json`).then((messages) => {
+        setLocale(messages);
+      });
+      ```
+  - script 标签
+    - 默认是 javascript，所以`type="application/javascript"`可以省略
+    - \<script\> 默认是同步加载，所以会阻塞 HTML 的渲染，`defer`和`async`属性会开启异步加载
+      - `defer`会等页面中正常渲染结束(DOM 结构完全生成，及其他脚本执行完成)才会执行
+      - `async`不会阻塞 DOM 的渲染，但是一旦脚本下载完，就会暂停 DOM 渲染执行脚本
+      - 所以根据以上两点，如果有多个`defer`脚本，他们会形成顺序加载的效果; 而多个`async`会几乎同时开始下载，但谁先执行完成是无法保证的.
 
 ## CSS
 
