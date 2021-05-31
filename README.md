@@ -247,7 +247,14 @@
 ## Infrastructure
 
 - mono-repo & multi-repo
+  - 多个项目逻辑上可以独立拆分，单独发布，但彼此间又存在相对的版本依赖，比如一个大 team 的用户 UI，不同端的 UI 该 UI 的管理系统，此时就比较适合 mono-repo，经典例子就是 React；与之相对的 multi-repo，其实就是我们平时写的单个的 repository。
+  - dependency control，这或许是开发中最大的好处，公用的依赖可以放在最顶层，子项目要单独使用的版本可以写在子项目的 package.json.
+  - 一致性，包括项目构建、代码风格、lint 规则、覆盖率要求等
+  - 多个子仓库可能依赖某些 shared 仓库，比如一个公司中有统一 design guideline 的 components，自定义 hooks，都可以成为单独的子仓库而被别的业务仓库 import，在提升了一致性和复用性的同时还简化了子仓库间的依赖管理。
   - lerna
+    - 版本控制分为锁定模式和独立模式，由项目根目录的`lerna.json`文件中的 version 字段决定
+      - 锁定模式，version 是一个具体的版本号，也同时同步了所有子项目的版本号
+      - 独立模式，`version: "independent"`, 每个子项目都需要在发布时确定其版本号
 - webpack
   - volumn optimization
   - speed optimization
