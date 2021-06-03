@@ -150,6 +150,8 @@
 
 - Diff strategy
 - Virtual DOM
+- diff
+  - [React list diff - ayqy](http://www.ayqy.net/blog/react-list-diff/)
 - Fiber
   - [完全理解 React Fiber - ayqy](http://www.ayqy.net/blog/dive-into-react-fiber/)
 - Component & PureComponent
@@ -259,8 +261,6 @@
   - volumn optimization
   - speed optimization
   - dynamically importing
-- module
-  - ES6 module(reference importing)
-  - CommonJS(value importing)
-  - AMD
-  - CMD
+- event loop
+  - macro task: setTimeout, setInterval, setImmediate, requestAnimationFrame, I/O, UI rendering
+  - micro task: process.nextTick, Promises, queueMicrotask, MutationObserver
