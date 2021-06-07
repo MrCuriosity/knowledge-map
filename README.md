@@ -264,3 +264,11 @@
 - event loop
   - macro task: setTimeout, setInterval, setImmediate, requestAnimationFrame, I/O, UI rendering
   - micro task: process.nextTick, Promises, queueMicrotask, MutationObserver
+- 设计模式
+  - 面向对象设计原则，"SOLID"
+    - 单一原则（Single Responsibility Principle），高内聚低耦合，一个类只做一个事情，耦合和内聚的界限参考实际情况和个人的理解
+    - 开闭原则（Open-Close Principle），对扩展开放，对修改关闭；这个原则在软件的生命周期中是用的很多的，包括多人协作的项目 code review 中也是一个很重要的原则，可以避免对旧功能的修改而导致的不稳定和重复 QA；
+    - 里氏替换原则（Liskov Substitution Principle），继承和多态的应用，简单的说就是父类出现的任何地方都可以被子类替换，且程序原有的行为不变。
+      - 继承，重载（overload），多态（polymorphism）
+    - 接口隔离原则（Interface Segregation Principle），接口的调用者不应该被迫依赖于他用不到的一些方法，比如 A 接口实现了 abcde 方法，B 只需要 abc 方法，则最小依赖其实是 abc，de 可以通过扩展得到。看起来跟单一职责有点类似，但 SRP 是从接口、类的设计角度来看的，ISP 则是通过接口的使用者对接口的依赖间接来看的。
+    - 依赖翻转原则（Dependence Inversion Principle），A 类的 a 方法具有对 b 方法的依赖，如此编程，则高层依赖底层，底层一改变则高层实现全要变，这样耦合度是很高的，程序会越来越难以维护。依赖反转则可以使高层依赖底层，这里并不是完全指的是字面意义上的反过来设计程序，比如一个基础 dropdown -> 多选 dropdown -> 带搜索功能的 dropdown，包括了 input 组件和 tag 组件，这里并不是从成品开始拆成最细粒度的组件，而是实现相同的接口，那么底层和高层都无所谓了，只要实现了约定的接口，无论基础的 dropdown 还是高层的 input 和 tag 都变得可拆卸，比如 typescript 这样的静态类型语言配合泛型就能很好的解决这个问题。个人理解，声明式编程天然的解决了依赖反转的问题。
