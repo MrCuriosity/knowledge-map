@@ -161,6 +161,7 @@
 - stateless component & class component
 - Hooks
   - [Official Doc](https://reactjs.org/docs/hooks-intro.html)
+  - 单个 hook 是闭包，多个 hooks 是多个闭包依赖组成的单链表，这个单链表的信息存储在每个 fiber 节点上，跟随 component 一起创建一起销毁，参考 [React Hooks 原理](https://github.com/brickspert/blog/issues/26)
 - Lists & Keys
   - [Official Doc](https://reactjs.org/docs/lists-and-keys.html)
 - Higher Order Component
@@ -221,8 +222,13 @@
 
 ## Functional Programming
 
-- [side effect](./source/functional_programming/side_effect.md)
-- pure function
+- 函数式有两个基本的优点
+  - 引用透明
+  - 结果可预测
+    > 引用透明本身就通过依赖注入的方式剥离了函数内部对外部的依赖，结果可预测，使得同样的输入一定得到同样的输出，这对函数在程序中的可替换性（重构）有很重要的意义。
+- side effect，剥离副作用有两个方案
+  - 常见的依赖注入
+  - 函子（functor）[函数式编程中如何处理副作用](http://www.ayqy.net/blog/%e5%87%bd%e6%95%b0%e5%bc%8f%e7%bc%96%e7%a8%8b%e4%b8%ad%e5%a6%82%e4%bd%95%e5%a4%84%e7%90%86%e5%89%af%e4%bd%9c%e7%94%a8%ef%bc%9f/)
 - [tail invoking](https://juejin.im/entry/592e8a2d0ce463006b510b34)
 - recurring
 - currying
