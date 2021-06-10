@@ -1,10 +1,13 @@
 ## Javascript Foundation
 
-- this
+- this 指向，函数中通常指向他的调用者
   - 文件顶层
-  - 构造函数
-  - 箭头函数
-  - 对象方法
+    - node 环境指向`module.exports`
+    - 浏览器环境指向 window
+    - 严格模式指向 undefined
+  - 构造函数，指向其实例
+  - 箭头函数，箭头函数自己没有 this，他的 this 继承自上一级作用域
+  - 对象方法，指向调用它的那个对象，比如 a.f()指向 a，a.b.f()指向 a.b（这里 a.b 很明显是一个引用类型）
 - prototype & \_\_proto\_\_ [自己写的原型链总结](https://github.com/MrCuriosity/blog/blob/master/draft/2021/2/prototype.md)
 - base data type(latest ECMAScript defined **8** types)
   - Boolean
@@ -15,9 +18,45 @@
   - BigInt
   - String
   - Symbol
+    - 替代有些魔法字符，比如跟业务无关的 tabs`['orders', 'credits']`
+    - 避免复杂对象的属性名覆盖
+    - 保护私有方法名
 - Object
+
   - structure: [HashMap](https://plushunter.github.io/2017/07/25/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%EF%BC%8811%EF%BC%89%EF%BC%9A%E5%93%88%E5%B8%8C%E8%A1%A8/)
-  - Object.DefineProperty
+  - Object.DefineProperty，精确地添加或修改对象的属性，分为
+    - 数据描述符
+      - `value`，该属性的值，可以是任意的 js 值
+      - `writable`，`value`是否可用过赋值运算符`=`改变
+        ```javascript
+        Object.defineProperty(obj, "key", {
+          enumerable: false,
+          configurable: false,
+          writable: false,
+          value: "static",
+        });
+        ```
+    - 存取描述符
+      - `get`，取值函数，返回值为属性的值，没有时为 undefined
+      - `set`，赋值函数，接收一个参数为赋值的值
+        ```javascript
+        var o = {};
+        var bValue = 38;
+        Object.defineProperty(o, "b", {
+          get() {
+            return bValue;
+          },
+          set(newValue) {
+            bValue = newValue;
+          },
+          enumerable: true,
+          configurable: true,
+        });
+        ```
+    - 可选
+      - `enumerable`，是否可枚举(Object.keys)
+      - `configurable`，其他操作符属性是否可改变
+
 - Function
 - iterator
   - [阮一峰 es6 入门 - 迭代器](http://es6.ruanyifeng.com/#docs/iterator)
