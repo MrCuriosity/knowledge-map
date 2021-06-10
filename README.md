@@ -233,6 +233,8 @@
 - recurring
 - currying
 - compose
+- Redux
+  - [实现一个 redux](https://github.com/brickspert/blog/issues/22)
 
 ---
 
