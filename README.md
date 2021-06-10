@@ -77,7 +77,7 @@
     wm.get(member1);
     // undefined
     ```
-  - 但 WeakMap 与 WeakSet 不同的地方是，其值是建立了引用的，不会因为外界的所有引用消失而消失
+  - 但 WeakMap 与 WeakSet 不同的地方是，其 **值** 本身是对那块内存建立了引用的，不会因为外界的所有引用消失而消失
     ```javascript
     var member1 = { name: "wang" };
     var member1Profile = { job: "FEE" };
@@ -87,7 +87,7 @@
       job: "FEE";
     }
     member1Profile = null;
-    null;
+    // null;
     wm.get(member1);
     {
       job: "FEE";
@@ -159,7 +159,7 @@
       console.log(counter); // 4
       ```
 
-      可见 es6 的模块是动态的，实时反映了其内部的变化，一个更生动的例子
+      可见 es6 的模块是动态的模块(文件)单例，实时反映了其内部的变化，一个更生动的例子
 
       ```javascript
       // m1.js
@@ -174,7 +174,6 @@
 
     - CommonJS 运行时加载，es6 module 编译时输出接口.
     - require()是同步加载，而 import 是异步加载, 但有一个独立的模块依赖解析阶段
-    -
 
 ## CSS
 
@@ -188,8 +187,7 @@
 ## React
 
 - Diff strategy
-- Virtual DOM
-- diff
+  - [[WIP]React diff 策略总结](https://github.com/MrCuriosity/blog/blob/master/draft/2021/6/react-diff.md)
   - [React list diff - ayqy](http://www.ayqy.net/blog/react-list-diff/)
 - Fiber
   - [完全理解 React Fiber - ayqy](http://www.ayqy.net/blog/dive-into-react-fiber/)
@@ -200,7 +198,7 @@
 - stateless component & class component
 - Hooks
   - [Official Doc](https://reactjs.org/docs/hooks-intro.html)
-  - 单个 hook 是闭包，多个 hooks 是多个闭包依赖组成的单链表，这个单链表的信息存储在每个 fiber 节点上，跟随 component 一起创建一起销毁，参考 [React Hooks 原理](https://github.com/brickspert/blog/issues/26)
+  - 单个 hook 是闭包，多个 hooks 是多个闭包依赖组成的单链表，这个单链表的信息（每个链表上的信息节点也是一个对象）存储在每个 fiber 节点上，跟随 component 一起创建一起销毁，参考 [React Hooks 原理](https://github.com/brickspert/blog/issues/26)
 - Lists & Keys
   - [Official Doc](https://reactjs.org/docs/lists-and-keys.html)
 - Higher Order Component
@@ -235,8 +233,9 @@
 - Cache
   - 静态资源缓存
     - 强缓存(Pragma/Cache-Control/Expires)
-      - Expires 是 HTTP1.0 标准, 表示在将来某个时间失效(必须是格林威治时间)
-      - Cache-Control 是 HTTP1.1 标准
+      - Pragma: no-cache 是 HTTP1.0 标准
+      - Expires 也是 HTTP1.0 标准, 表示在将来某个时间失效(必须是格林威治时间)
+      - Cache-Control 是 HTTP1.1 标准，`Cache-Control: max-age=360000` etc.
       - 为了做向下兼容, 三者可能同时出现, 如果同时出现, 优先级为 Pragma -> Cache-Control -> Expires
     - 协商缓存(Etag/If-None-Match/Last-Modified/If-Modified-Since)
       - Etag/If-None-Match(基于资源内容做的 hash)
@@ -296,7 +295,7 @@
 ## Infrastructure
 
 - mono-repo & multi-repo
-  - 多个项目逻辑上可以独立拆分，单独发布，但彼此间又存在相对的版本依赖，比如一个大 team 的用户 UI，不同端的 UI 该 UI 的管理系统，此时就比较适合 mono-repo，经典例子就是 React；与之相对的 multi-repo，其实就是我们平时写的单个的 repository。
+  - 多个项目逻辑上可以独立拆分，单独发布，但彼此间又存在相对的版本依赖，比如一个大 team 的用户 UI，不同端的 UI 与该 UI 的管理系统，此时就比较适合 mono-repo，经典例子就是 React；与之相对的 multi-repo，其实就是我们平时写的单个的 repository。
   - dependency control，这或许是开发中最大的好处，公用的依赖可以放在最顶层，子项目要单独使用的版本可以写在子项目的 package.json.
   - 一致性，包括项目构建、代码风格、lint 规则、覆盖率要求等
   - 多个子仓库可能依赖某些 shared 仓库，比如一个公司中有统一 design guideline 的 components，自定义 hooks，都可以成为单独的子仓库而被别的业务仓库 import，在提升了一致性和复用性的同时还简化了子仓库间的依赖管理。
