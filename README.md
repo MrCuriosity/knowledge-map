@@ -209,7 +209,6 @@
   - [Official Doc](https://reactjs.org/docs/portals.html)
 - Fragment
   - [Official Doc](https://reactjs.org/docs/fragments.html)
-- React.la
 
 ---
 
@@ -231,6 +230,7 @@
 - DNS
   - [ayqy 博客 - 一文详解 DNS](https://mp.weixin.qq.com/s/0YKV9E4rd77Wc7U4XJmWEQ)
 - Cache
+
   - 静态资源缓存
     - 强缓存(Pragma/Cache-Control/Expires)
       - Pragma: no-cache 是 HTTP1.0 标准
@@ -247,14 +247,13 @@
     - sesstionStorage
     - localStorage(生命周期与 cookie 不同, 稍大一点, 5M 左右, 可以做一些数据的本地保持, 故而生命周期理论上是无限的, 受该域下 JS 控制, 可以用于表单数据保持, 登陆状态保持等)
 
+- HTTP2 [background](https://http2-explained.haxx.se/zh/part1)
+- HTTPS（TBD)
+
 ## API
 
 - RESTful
 - graphQL
-
-## HTTP2
-
-- [background](https://http2-explained.haxx.se/zh/part1)
 
 ---
 
@@ -287,6 +286,11 @@
   - [一步一步实现一个 Promise](https://juejin.im/post/5c6ad98e6fb9a049d51a0f5e)
 
 ## Performance
+
+- react
+
+  - 如何分析和定位（TBD）
+  - 有哪些优化手段
 
 - [Google Developer Doc](https://developers.google.com/web/fundamentals/performance/why-performance-matters)
 
