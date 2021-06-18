@@ -326,7 +326,7 @@
     }
     // 改一下
     const Father = (props) => {
-      const sonOnClick = useCallback(() => console.log(props.name), props.name);
+      const sonOnClick = useCallback(() => console.log(props.name), [props.name]);
       return <Son onClick={sonOnClick} />
     }
     ```
