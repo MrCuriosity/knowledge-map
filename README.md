@@ -301,7 +301,7 @@
   - 有哪些优化手段
     - 避免过深的 props 嵌套，可以用 redux 等直接与数据中心通信，或者`createContext`(其实 redux store 就是封装了上下文的功能)
     - 对于不稳定的 props 对象，避免粗暴的`{ ...props }`，因为后续的 props 膨胀会导致无意义的 rerender
-    - PureComponent 替代 Component，避免无意义的 diff(跑到 render()去)
+    - PureComponent 替代 Component，避免无意义的 diff(跑到 render()去, 却又 diff 不出来任何变化，此时，从入口到 render 之间的代码开销全是浪费的)
     - memo 包裹函数组件，同上
     - useMemo 来存储一些昂贵的计算(比如 rerender 每次都会路经的平平无奇的代码)
     -
@@ -318,13 +318,13 @@
         <ThisIsAChildComponent onClick={() => console.log(this.props.userName) } />
       )
     }
-    <!-- 当这个render方法跑到的时候，onClick的指向总是变，所以<ThisIsAChildComponent />总是rerender -->
-    <!-- 同样道理 -->
+    // 当这个render方法跑到的时候，onClick的指向总是变，所以<ThisIsAChildComponent />总是rerender
+    // 同样道理
     const Father = (props) => {
       const sonOnClick = () => console.log(props.name);
       return <Son onClick={sonOnClick} />
     }
-    <!-- 改一下 -->
+    // 改一下
     const Father = (props) => {
       const sonOnClick = useCallback(() => console.log(props.name), props.name);
       return <Son onClick={sonOnClick} />
