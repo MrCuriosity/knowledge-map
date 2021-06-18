@@ -289,8 +289,47 @@
 
 - react
 
-  - 如何分析和定位（TBD）
+  - 如何分析和定位
+    - 自带的 profiler
+      - [Introducing the React Profiler](https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html)
+      - 找到一段时间内用时过长的部分
+      - 用时过长可能是多次 render(diff)
+      - 也可能是单次 render 和 commit 过长
+      - 由于 profiler 分析的主要是组件的 diff 和 commit，所以它对性能的分析也是有边界的，比如 js 的昂贵计算就分析不到
+    - chrome performance tab
+      - 这个主要是分析调用栈的消费以及 FPS 变化
   - 有哪些优化手段
+    - 避免过深的 props 嵌套，可以用 redux 等直接与数据中心通信，或者`createContext`(其实 redux store 就是封装了上下文的功能)
+    - 对于不稳定的 props 对象，避免粗暴的`{ ...props }`，因为后续的 props 膨胀会导致无意义的 rerender
+    - PureComponent 替代 Component，避免无意义的 diff(跑到 render()去)
+    - memo 包裹函数组件，同上
+    - useMemo 来存储一些昂贵的计算(比如 rerender 每次都会路经的平平无奇的代码)
+    -
+    ```javascript
+    const memoResult = useMemo(() => expensiveComputation(props.stableProp), [
+      props.stableProp,
+    ]);
+    ```
+    - useCallback 来缓存一些函数，这个倒不一定是为了缓存`昂贵`的函数，而是因为函数经常会创建，函数当做 prop 传入子组件时，浅比较总是会失败，从而导致接收函数的组件 rerender 的，想起早期大家只写类组件时
+    ```javascript
+    // ...
+    render() {
+      return (
+        <ThisIsAChildComponent onClick={() => console.log(this.props.userName) } />
+      )
+    }
+    <!-- 当这个render方法跑到的时候，onClick的指向总是变，所以<ThisIsAChildComponent />总是rerender -->
+    <!-- 同样道理 -->
+    const Father = (props) => {
+      const sonOnClick = () => console.log(props.name);
+      return <Son onClick={sonOnClick} />
+    }
+    <!-- 改一下 -->
+    const Father = (props) => {
+      const sonOnClick = useCallback(() => console.log(props.name), props.name);
+      return <Son onClick={sonOnClick} />
+    }
+    ```
 
 - [Google Developer Doc](https://developers.google.com/web/fundamentals/performance/why-performance-matters)
 
