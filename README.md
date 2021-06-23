@@ -198,7 +198,8 @@
 - stateless component & class component
 - Hooks
   - [Official Doc](https://reactjs.org/docs/hooks-intro.html)
-  - 单个 hook 是闭包，多个 hooks 是多个闭包依赖组成的单链表，这个单链表的信息（每个链表上的信息节点也是一个对象）存储在每个 fiber 节点上，跟随 component 一起创建一起销毁，参考 [React Hooks 原理](https://github.com/brickspert/blog/issues/26)
+  - hooks 要解决的问题，即状态与 UI 的分离，拿走 hooks，组件可以是完全无状态的，这其实是一种依赖注入，只不过注入入口不在 props 上（也可以理解成 renderProps 的另一种写法）；所以 hooks 的出现对于数据处理逻辑的复用性大大提高（useWindowResize, useOnClickOutside)
+  - 实现，单个 hook 是闭包，多个 hooks 是多个闭包依赖组成的单链表，这个单链表的信息（每个链表上的信息节点也是一个对象）存储在每个 fiber 节点上，跟随 component 一起创建一起销毁，参考 [React Hooks 原理](https://github.com/brickspert/blog/issues/26)
 - Lists & Keys
   - [Official Doc](https://reactjs.org/docs/lists-and-keys.html)
 - Higher Order Component
