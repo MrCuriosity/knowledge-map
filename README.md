@@ -367,3 +367,4 @@
 ### unresolved questions
 
 - 星号函数的`iterator.next(param)`注入 param 来控制上一个 yield 的输出，原理是什么
+- 长链接，websocket 和 SSE（server-send events）的区别
