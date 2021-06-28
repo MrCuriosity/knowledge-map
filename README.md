@@ -8,6 +8,10 @@
   - 构造函数，指向其实例
   - 箭头函数，箭头函数自己没有 this，他的 this 继承自上一级作用域
   - 对象方法，指向调用它的那个对象，比如 a.f()指向 a，a.b.f()指向 a.b（这里 a.b 很明显是一个引用类型）
+  - 一些改变 this 的方法
+    - `call`，绑定传入的 this 和参数，立即执行`func.call(this, arg1, arg2)`
+    - `apply`, 绑定传入的 this 和参数，立即执行，参数结构与`call`略有不同，`func.apply(this, [...args])`;
+    - `bind`, 创建一个绑定了 this 和部分参数已求值的新函数，可以用来固定 this 或者实现一些惰性求值的功能，例如柯里化
 - prototype & \_\_proto\_\_ [自己写的原型链总结](https://github.com/MrCuriosity/blog/blob/master/draft/2021/2/prototype.md)
 - base data type(latest ECMAScript defined **8** types)
   - Boolean
