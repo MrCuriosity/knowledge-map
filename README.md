@@ -11,7 +11,7 @@
   - 一些改变 this 的方法
     - `call`，绑定传入的 this 和参数，立即执行`func.call(this, arg1, arg2)`
     - `apply`, 绑定传入的 this 和参数，立即执行，参数结构与`call`略有不同，`func.apply(this, [...args])`;
-    - `bind`, 创建一个绑定了 this 和部分参数已求值的新函数，可以用来固定 this 或者实现一些惰性求值的功能，例如柯里化
+    - `bind`, 创建一个绑定了 this 和部分参数已求值的新函数，可以用来固定 this 或者实现一些惰性求值的功能，例如柯里化，[手写柯里化](https://github.com/MrCuriosity/blog/blob/master/draft/2020/6/curry.md)
 - prototype & \_\_proto\_\_ [自己写的原型链总结](https://github.com/MrCuriosity/blog/blob/master/draft/2021/2/prototype.md)
 - base data type(latest ECMAScript defined **8** types)
   - Boolean
