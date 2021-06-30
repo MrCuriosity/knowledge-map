@@ -291,6 +291,7 @@
 
 - Promise
   - [一步一步实现一个 Promise](https://juejin.im/post/5c6ad98e6fb9a049d51a0f5e)
+- generator function, 星号函数返回一个迭代器(`iterator`), 通过调用迭代器的 next 方法(`iterator.next()`)来改变迭代器的指针，每次移动指针，迭代器指向一个包含了每一步 yield 返回值的对象(`{ value: 'someYieldValue', done: false }`)，`yield`后面的表达式可以是同步也可以是异步的，星号函数使 Promise 避免了链式调用的嵌套，优化了错误捕捉，并且可以通过`iterator.next(injectedValue)`来改变上一个 yield 的返回值，从而达到影响执行逻辑的目的，这在写测试中非常实用.
 
 ## Performance
 
