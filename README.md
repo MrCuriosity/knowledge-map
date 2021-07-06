@@ -186,6 +186,19 @@
 - BFC
 - Holy grail layout
 - clear float
+- background-image
+  ```css
+  .bg {
+    background-image: url("iamge1.png"), url("image2.png");
+  }
+  ```
+  与
+  ```css
+  .bg {
+    background-image: url("iamge2.png"), url("image1.png");
+  }
+  ```
+  表现不同，第一段代码，图 1 在图 2 上面，第二段图 2 在图 1 上面，代码里越靠前的越靠近用户。
 
 ---
 
