@@ -294,6 +294,12 @@
   - [实现一个 redux](https://github.com/brickspert/blog/issues/22)
   - react-redux 中间件原理（包括异步，衍生实现 saga，TBD）
 
+## Typescript
+
+- `unknown`, `any`, `never` 使用
+- 泛型
+- https://github.com/type-challenges/type-challenges
+
 ---
 
 ## Authorization
