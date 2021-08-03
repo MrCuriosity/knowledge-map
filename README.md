@@ -397,6 +397,7 @@
   - 虚拟化程度不同，VM硬件级的虚拟化，容器是操作系统级的虚拟化，后者更高
   - VM需要的内存更多，容器需要的内存较少
   - 隔离程度不同，VM完全隔离，所以更安全；容器只做到了进程隔离
+- docker和k8s [10分钟看懂Docker和K8S](https://zhuanlan.zhihu.com/p/53260098)
 
 ### unresolved questions
 
